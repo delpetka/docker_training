@@ -1,0 +1,59 @@
+1: 74b4147957813b62cc8987f2b711ddb31f8cb46dcbf71502033da66053c8780a  docker
+2: 05217cbdff992f211447c5b101b08f66305aedaf8a6205ca245f4d2af6349926  /etc/os-release
+3: 377e96d9304a3e91119a58155becca958b4dc286c203ea2917ebeadba183db1c  /usr/bin/sha256sum
+
+4: docker run -it alpine
+Unable to find image 'alpine:latest' locally
+latest: Pulling from library/alpine
+89d9c30c1d48: Pull complete
+Digest: sha256:c19173c5ada610a5989151111163d28a67368362762534d8a8121ce95cf2bd5a
+Status: Downloaded newer image for alpine:latest
+
+/ # wc /etc/passwd
+       28        30      1230 /etc/passwd
+
+[root@831fdeed0223 /]# docker run  alpine wc /etc/passwd
+       28        30      1230 /etc/passwd
+
+5:  docker run -it busybox
+Unable to find image 'busybox:latest' locally
+latest: Pulling from library/busybox
+0f8c40e1270f: Pull complete
+Digest: sha256:1303dbf110c57f3edf68d9f5a16c082ec06c4cf7604831669faf2c712260b5a0
+Status: Downloaded newer image for busybox:latest
+
+# df -h /
+Filesystem                Size      Used Available Use% Mounted on
+overlay                   8.0G      2.1G      5.9G  27% /
+
+
+[root@ip-172-31-85-60 lab1]# docker run busybox df -h /
+Filesystem                Size      Used Available Use% Mounted on
+overlay                   8.0G      2.1G      5.9G  27% /
+
+
+6: could not find the hello-world container binary
+
+7: ps does not work.
+
+for httpd processes
+docker run -d httpd
+ca63eb675173f30acfe690d81c78d63eceaa80866b0b1f958250442879b484b4
+[root@ip-172-31-85-60 lab1]#
+[root@ip-172-31-85-60 lab1]#
+[root@ip-172-31-85-60 lab1]#
+[root@ip-172-31-85-60 lab1]# docker ps
+CONTAINER ID        IMAGE               COMMAND              CREATED             STATUS              PORTS               NAMES
+ca63eb675173        httpd               "httpd-foreground"   6 seconds ago       Up 5 seconds        80/tcp              modest_fermi
+
+
+[root@ip-172-31-85-60 lab1]# ps aux | grep httpd
+root      7265  0.1  0.4   5936  4336 ?        Ss   17:52   0:00 httpd -DFOREGROUND
+bin       7316  0.0  0.3 751852  3592 ?        Sl   17:52   0:00 httpd -DFOREGROUND
+bin       7317  0.0  0.3 751852  3592 ?        Sl   17:52   0:00 httpd -DFOREGROUND
+bin       7318  0.0  0.3 751852  3588 ?        Sl   17:52   0:00 httpd -DFOREGROUND
+root      7407  0.0  0.0 119420   948 pts/0    S+   17:53   0:00 grep --color=auto httpd
+
+8: 
+ubuntu: 751613838cb1bdbe778ca405d74e2911dd0ab4a0d0584ac740be30906694e38c  /hello
+centos: b639b7bd36bacd5110daa5577442c1d38d44f0b9cf1728e3340da77accc7e0e6  /hello
